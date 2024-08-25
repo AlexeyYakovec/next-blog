@@ -1,10 +1,15 @@
 import { LatestPosts } from "@/components/shared/latest-posts";
+import { MainNav } from "@/components/ui/nav-menu";
+
 import Image from "next/image";
 
 export default function Home() {
    return (
-      <main className="">
-         <LatestPosts />
-      </main>
+      <>
+         <MainNav />
+         <main className="">
+            <LatestPosts />
+         </main>
+      </>
    );
 }
