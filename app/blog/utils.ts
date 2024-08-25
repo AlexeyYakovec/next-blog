@@ -1,16 +1,19 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-// get all the mdx files from the dir
+
+// Возвращается массив строк, содержащий имена всех .mdx файлов в указанной директории.
 function getMDXFiles(dir: string) {
    return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
-// Read data from those files
+
+// Эта функция читает содержимое указанного .mdx файла и извлекает из него метаданные и контент с помощью gray-matter.
+// Возвращает объект с двумя свойствами: метаданные(data) и контент(content).
 function readMDXFile(filePath: fs.PathOrFileDescriptor) {
    let rawContent = fs.readFileSync(filePath, "utf-8");
    return matter(rawContent);
 }
-// present the mdx data and metadata
+// Эта функция собирает метаданные и контент всех .mdx файлов в указанной директории.
 function getMDXData(dir: string) {
    let mdxFiles = getMDXFiles(dir);
 
@@ -27,17 +30,13 @@ function getMDXData(dir: string) {
 }
 
 export function getBlogPosts() {
-   return getMDXData(
-      path.join(process.cwd(), "src", "app", "blog", "contents")
-   );
+   return getMDXData(path.join(process.cwd(), "app", "blog", "contents"));
 }
 export function getTermsOfServices() {
-   return getMDXData(
-      path.join(process.cwd(), "src", "app", "terms-of-services")
-   );
+   return getMDXData(path.join(process.cwd(), "app", "terms-of-services"));
 }
 export function getPrivacyPolicy() {
-   return getMDXData(path.join(process.cwd(), "src", "app", "privacy-policy"));
+   return getMDXData(path.join(process.cwd(), "app", "privacy-policy"));
 }
 
 export function formatDate(date: string, includeRelative = false) {
