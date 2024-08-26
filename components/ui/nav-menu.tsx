@@ -41,7 +41,7 @@ export function MainNav() {
    return (
       <div
          className={cn(
-            "flex flex-col items-start justify-start md:flex-row md:items-center md:justify-between z-50 p-5"
+            "flex flex-col items-start justify-start md:flex-row md:items-center md:justify-between z-50 p-5 gap-10"
          )}
       >
          <Link href={"/"} className="self-start">
