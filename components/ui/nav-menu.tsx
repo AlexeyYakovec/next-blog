@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import { POSTS } from "@/lib/constants";
 
 import {
    NavigationMenu,
@@ -16,26 +17,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Icons } from "./icons";
 import { ModeToggle } from "./mode-toggle";
-
-const posts: { title: string; href: string; description: string }[] = [
-   {
-      title: "React",
-      href: "/docs/blog/react",
-      description:
-         "Learn React.js and Next.js in a simple to understand articles",
-   },
-   {
-      title: "Performance",
-      href: "/docs/performance",
-      description: "How to make your next app Blazing fast",
-   },
-   {
-      title: "Career",
-      href: "/docs/blog/career",
-      description:
-         "A popup that displays information related to an element when the element",
-   },
-];
 
 export function MainNav() {
    return (
@@ -57,7 +38,7 @@ export function MainNav() {
                   <NavigationMenuTrigger>Posts</NavigationMenuTrigger>
                   <NavigationMenuContent>
                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                        {posts.map((component) => (
+                        {POSTS.map((component) => (
                            <ListItem
                               key={component.title}
                               title={component.title}

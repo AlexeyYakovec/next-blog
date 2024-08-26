@@ -1,8 +1,9 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import { categories } from "@/lib/placeholder-data";
+
 import { Button } from "../ui";
 import Link from "next/link";
+import { POSTS } from "@/lib/constants";
 
 interface Props {
    className?: string;
@@ -16,15 +17,15 @@ export const TopCategories: React.FC<Props> = ({ className }) => {
             className
          )}
       >
-         {categories.map((category) => {
+         {POSTS.map((post) => {
             return (
                <Button
-                  key={category}
+                  key={post.title}
                   variant={"secondary"}
                   className="hover:scale-105 transition-all"
                   asChild
                >
-                  <Link href={`/blog/${category}`}>{category}</Link>
+                  <Link href={post.href}>{post.title}</Link>
                </Button>
             );
          })}
