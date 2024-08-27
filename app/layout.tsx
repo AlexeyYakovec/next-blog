@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { cn } from "@/lib/utils";
 import { Footer } from "@/components/shared";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSans = Noto_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
    title: "Create Next App",
@@ -22,7 +22,7 @@ export default function RootLayout({
          <body
             className={cn(
                "min-h-screen bg-background font-sans antialiased",
-               inter.className
+               notoSans.className
             )}
          >
             <ThemeProvider

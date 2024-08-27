@@ -26,7 +26,7 @@ export function MainNav() {
          )}
       >
          <Link href={"/"} className="self-start">
-            <div className="flex items-center justify-between w-32">
+            <div className="flex items-center justify-between w-36 gap-2">
                <Icons.logo className="h-6 w-6 " />
                <p>Coding como</p>
             </div>
