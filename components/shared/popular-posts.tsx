@@ -1,6 +1,8 @@
+"use client";
+
+// import { popularPosts } from "../../lib/placeholder-data";
 import { cn, fetchUrl, fetcher } from "@/lib/utils";
 import React from "react";
-import { popularPosts } from "../../lib/placeholder-data";
 import { Icons } from "../ui";
 import useSWR from "swr";
 import Link from "next/link";
