@@ -22,7 +22,7 @@ export function MainNav() {
    return (
       <div
          className={cn(
-            "flex flex-col items-center gap-5 justify-start md:flex-row md:items-center md:justify-between pt-10 z-50"
+            "flex flex-col items-start gap-5 justify-start md:flex-row md:items-center md:justify-between pt-10 z-50"
          )}
       >
          <Link href={"/"}>
