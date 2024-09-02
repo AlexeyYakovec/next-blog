@@ -3,7 +3,14 @@ import { getBlogPosts } from "../utils";
 import Link from "next/link";
 import { Container, Header } from "@/components/ui";
 import { CardCategory } from "@/components/shared";
-import { log } from "node:console";
+
+export async function generateStaticParams() {
+   let posts = getBlogPosts();
+
+   return posts.map((post) => {
+      category: post.metadata.category;
+   });
+}
 
 export default function Page({ params }: { params: { category: string } }) {
    let posts = getBlogPosts().filter(

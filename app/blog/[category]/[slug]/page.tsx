@@ -5,6 +5,14 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { BreadcrumbWithCustomSeparator } from "@/components/shared/breadcrumb";
 import { CustomMDX } from "@/components/shared/mdx";
 
+export async function generateStaticParams() {
+   let posts = getBlogPosts();
+
+   return posts.map((post) => {
+      slug: post.slug;
+   });
+}
+
 interface PageProps {
    params: {
       category: string;
