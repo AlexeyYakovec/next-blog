@@ -10,9 +10,7 @@ export default function Page({ params }: { params: { category: string } }) {
       (post) => post.metadata.category === params.category
    );
 
-   console.log(posts);
-
-   if (!posts) {
+   if (!posts.length) {
       notFound();
    }
 

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import { Button, Icons, Input } from "../ui";
+import { Button, Icons, Input } from ".";
 import Link from "next/link";
 import { POSTS } from "@/lib/constants";
 
@@ -11,7 +11,8 @@ interface Props {
 export const Footer: React.FC<Props> = ({ className }) => {
    return (
       <footer
-         className={cn("bg-gray-100 py-8 dark:bg-gray-800 mt-100", className)}
+         className={cn("bg-gray-100 py-8 dark:bg-gray-800", className)}
+         style={{ marginTop: 100 }}
       >
          <div className="container mx-auto px-4 md:px-6">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-4">

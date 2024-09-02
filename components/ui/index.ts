@@ -7,3 +7,4 @@ export { MainNav } from "./nav-menu";
 export { Title } from "./title";
 export { Input } from "./input";
 export { Header } from "./header";
+export { Footer } from "./footer";
