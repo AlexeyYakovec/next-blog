@@ -6,3 +6,4 @@ export { ModeToggle } from "./mode-toggle";
 export { MainNav } from "./nav-menu";
 export { Title } from "./title";
 export { Input } from "./input";
+export { Header } from "./header";

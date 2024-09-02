@@ -23,15 +23,20 @@ export const CardCategory: React.FC<CardCategoryProps> = ({
    className,
 }) => {
    return (
-      <Card className={cn("w-[350px] h-[290px] shadow-lg", className)}>
+      <Card
+         className={cn(
+            "w-[350px] h-[290px] shadow-lg flex flex-col",
+            className
+         )}
+      >
          <CardHeader>
             <CardTitle>{title}</CardTitle>
          </CardHeader>
-         <CardContent>
+         <CardContent className="flex-1">
             <p>{summary}</p>
          </CardContent>
          <CardFooter>
-            <p className="text-xs ">{formatDate(date)}</p>
+            <p className="text-xs">{formatDate(date)}</p>
          </CardFooter>
       </Card>
    );

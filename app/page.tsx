@@ -7,7 +7,7 @@ export default function Home() {
    return (
       <Container>
          <MainNav />
-         <main className="flex flex-col justify-evenly mt-16 md:flex-row">
+         <main className="flex flex-col items-start justify-evenly mt-16 md:flex-row">
             <section>
                <LatestPosts />
             </section>

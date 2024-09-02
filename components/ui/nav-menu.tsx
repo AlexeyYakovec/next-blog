@@ -22,10 +22,10 @@ export function MainNav() {
    return (
       <div
          className={cn(
-            "flex flex-col items-start justify-start md:flex-row md:items-center md:justify-between z-50 p-5 gap-10"
+            "flex flex-col items-center gap-5 justify-start md:flex-row md:items-center md:justify-between pt-10 z-50"
          )}
       >
-         <Link href={"/"} className="self-start">
+         <Link href={"/"}>
             <div className="flex items-center justify-between w-36 gap-2">
                <Icons.logo className="h-6 w-6 " />
                <p>Coding como</p>
