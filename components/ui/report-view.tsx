@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn, fetchUrl } from "@/lib/utils";
 
 import React, { useEffect } from "react";
 
@@ -33,7 +33,8 @@ export const ReportView: React.FC<ReportViewProps> = ({
             console.log("Something is up...", error);
          }
       };
-   }, []);
+      postData();
+   }, [category, slug, title]);
 
    return <div></div>;
 };
