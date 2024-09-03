@@ -6,7 +6,7 @@ import React from "react";
 import { Icons } from "../ui";
 import useSWR from "swr";
 import Link from "next/link";
-import { Key } from "lucide-react";
+import { PopularPostsSkeleton } from "./popular-posts-skeleton";
 
 interface Props {
    className?: string;
@@ -17,7 +17,7 @@ export const PopularPosts: React.FC<Props> = ({ className }) => {
    console.log(data);
 
    if (error) return <div>Failed to to load</div>;
-   if (isLoading) return <div>Loading...</div>;
+   if (isLoading) return <PopularPostsSkeleton />;
 
    return (
       <ul className={cn("overflow-auto ", className)}>
