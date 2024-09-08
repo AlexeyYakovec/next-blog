@@ -15,7 +15,7 @@ datasource db {
 }
 
 model Blog {
-	id		Int 		@id @default(autoincrement())
+	id			Int 		@id @default(autoincrement())
 	slug		String	@unique
 	title		String	
 	category 	String
@@ -25,7 +25,7 @@ model Blog {
 
 
 model Subscriber {
-	id			Int	@id	@default(autoincrement())
+	id				Int	@id	@default(autoincrement())
 	email			String	
 	is_subscribed	Boolean	@default(true)
 }
