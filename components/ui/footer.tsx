@@ -1,15 +1,21 @@
+'use client';
+
 import { cn } from '@/lib/utils';
 import React from 'react';
 import { Button, Icons, Input } from '.';
 import Link from 'next/link';
 import { POSTS } from '@/lib/constants';
-import { createSubscribe } from '@/lib/actions';
+import { createSubscriber } from '@/lib/actions';
+import { useFormState } from 'react-dom';
 
 interface Props {
     className?: string;
 }
 
 export const Footer: React.FC<Props> = ({ className }) => {
+    const initialState = { message: '', errors: {} };
+    const [state, dispatch] = useFormState(createSubscriber, initialState);
+
     return (
         <footer
             className={cn('bg-gray-100 py-8 dark:bg-gray-800', className)}
@@ -95,7 +101,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
                             the latest news and updates.
                         </p>
 
-                        <form action={createSubscribe}>
+                        <form action={dispatch}>
                             <div className="flex space-x-2">
                                 <Input
                                     type="email"
@@ -103,8 +109,33 @@ export const Footer: React.FC<Props> = ({ className }) => {
                                     id="email"
                                     placeholder="Enter your email"
                                     className="flex-1"
+                                    defaultValue=""
+                                    aria-describedby="email-error"
                                 />
+
                                 <Button>Subscribe</Button>
+                            </div>
+
+                            <div
+                                id="email-error"
+                                aria-label="polite"
+                                aria-atomic="true"
+                                className="px-1 mt-4">
+                                {state?.errors?.email &&
+                                    state.errors.email.map((error: string) => {
+                                        return (
+                                            <p
+                                                key={error}
+                                                className="text-xs text-red-500">
+                                                {error}
+                                            </p>
+                                        );
+                                    })}
+                                {!state?.errors?.email && (
+                                    <p className="text-xs text-green-500">
+                                        {state?.message}
+                                    </p>
+                                )}
                             </div>
                         </form>
                     </div>

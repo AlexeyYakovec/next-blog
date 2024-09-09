@@ -16,16 +16,16 @@ datasource db {
 
 model Blog {
 	id			Int 		@id @default(autoincrement())
-	slug		String	@unique
+	slug		String		@unique
 	title		String	
 	category 	String
-	view_count	Int		@default(1)
+	view_count	Int			@default(1)
 	updateAt 	DateTime 	@default(now())
 }
 
 
 model Subscriber {
 	id				Int	@id	@default(autoincrement())
-	email			String	
+	email			String	@unique
 	is_subscribed	Boolean	@default(true)
 }
