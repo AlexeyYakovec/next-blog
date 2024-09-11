@@ -1,77 +1,77 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
 // Возвращается массив строк, содержащий имена всех .mdx файлов в указанной директории.
 function getMDXFiles(dir: string) {
-   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
+    return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx');
 }
 
 // Эта функция читает содержимое указанного .mdx файла и извлекает из него метаданные и контент с помощью gray-matter.
 // Возвращает объект с двумя свойствами: метаданные(data) и контент(content).
 function readMDXFile(filePath: fs.PathOrFileDescriptor) {
-   let rawContent = fs.readFileSync(filePath, "utf-8");
-   return matter(rawContent);
+    let rawContent = fs.readFileSync(filePath, 'utf-8');
+    return matter(rawContent);
 }
 // Эта функция собирает метаданные и контент всех .mdx файлов в указанной директории.
 function getMDXData(dir: string) {
-   let mdxFiles = getMDXFiles(dir);
+    let mdxFiles = getMDXFiles(dir);
 
-   return mdxFiles.map((file) => {
-      let { data: metadata, content } = readMDXFile(path.join(dir, file));
-      let slug = path.basename(file, path.extname(file));
+    return mdxFiles.map((file) => {
+        let { data: metadata, content } = readMDXFile(path.join(dir, file));
+        let slug = path.basename(file, path.extname(file));
 
-      return {
-         metadata,
-         slug,
-         content,
-      };
-   });
+        return {
+            metadata,
+            slug,
+            content,
+        };
+    });
 }
 
 export function getBlogPosts() {
-   return getMDXData(path.join(process.cwd(), "app", "blog", "contents"));
+    return getMDXData(path.join(process.cwd(), 'app', 'blog', 'contents'));
 }
 export function getTermsOfServices() {
-   return getMDXData(path.join(process.cwd(), "app", "terms-of-services"));
+    return getMDXData(path.join(process.cwd(), 'app', 'terms-of-services'));
 }
 export function getPrivacyPolicy() {
-   return getMDXData(path.join(process.cwd(), "app", "privacy-policy"));
+    return getMDXData(path.join(process.cwd(), 'app', 'privacy-policy'));
 }
 
-export function formatDate(date: string = "", includeRelative = false) {
-   let currentDate = new Date();
-   if (!date.includes("T")) {
-      date = `${date}T00:00:00`;
-   }
+export function formatDate(date: string = '', includeRelative = false) {
+    let currentDate = new Date();
+    if (!date.includes('T')) {
+        date = `${date}T00:00:00`;
+    }
 
-   let targetDate = new Date(date);
+    let targetDate = new Date(date);
 
-   let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
-   let monthsAgo = currentDate.getMonth() - targetDate.getMonth();
-   let daysAgo = currentDate.getDate() - targetDate.getDate();
+    let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
+    let monthsAgo = currentDate.getMonth() - targetDate.getMonth();
+    let daysAgo = currentDate.getDate() - targetDate.getDate();
 
-   let formattedDate = "";
+    let formattedDate = '';
 
-   if (yearsAgo > 0) {
-      formattedDate = `${yearsAgo}y ago`;
-   } else if (monthsAgo > 0) {
-      formattedDate = `${monthsAgo}mo ago`;
-   } else if (daysAgo > 0) {
-      formattedDate = `${daysAgo}d ago`;
-   } else {
-      formattedDate = "Today";
-   }
+    if (yearsAgo > 0) {
+        formattedDate = `${yearsAgo}y ago`;
+    } else if (monthsAgo > 0) {
+        formattedDate = `${monthsAgo}mo ago`;
+    } else if (daysAgo > 0) {
+        formattedDate = `${daysAgo}d ago`;
+    } else {
+        formattedDate = 'Today';
+    }
 
-   let fullDate = targetDate.toLocaleString("en-us", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-   });
+    let fullDate = targetDate.toLocaleString('en-us', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+    });
 
-   if (!includeRelative) {
-      return fullDate;
-   }
+    if (!includeRelative) {
+        return fullDate;
+    }
 
-   return `${fullDate} (${formattedDate})`;
+    return `${fullDate} (${formattedDate})`;
 }
